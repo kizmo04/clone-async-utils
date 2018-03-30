@@ -26,19 +26,6 @@ describe("each", function() {
         });
     });
 
-    it('each extra callback', function(done) {
-        var count = 0;
-        async.each([1,3,2], function(val, callback) {
-            count++;
-            var done_ = count == 3;
-            callback();
-            assert.throws(callback);
-            if (done_) {
-                done();
-            }
-        });
-    });
-
     it('each empty array', function(done) {
         async.each([], function(x, callback){
             assert(false, 'iteratee should not be called');
@@ -72,9 +59,5 @@ describe("each", function() {
             expect(err).to.equal('error');
         });
         setTimeout(done, 50);
-    });
-
-    it('each no callback', function(done) {
-        async.each([1], eachNoCallbackIteratee.bind(this, done));
     });
 });

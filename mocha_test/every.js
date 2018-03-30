@@ -2,7 +2,7 @@ var async = require('../lib');
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-describe("every", function () {
+describe.skip("every", function () {
 
     it('true', function(done){
         async.every([1,2,3], function(x, callback){

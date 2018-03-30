@@ -7,7 +7,7 @@ function filterIteratee(x, callback) {
     }, x*5);
 }
 
-describe("filter", function () {
+describe.skip("filter", function () {
 
     it('filter', function(done){
         async.filter([3,1,2], filterIteratee, function(err, results){
