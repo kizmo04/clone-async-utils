@@ -57,18 +57,4 @@ describe.skip('parallel', function() {
         });
         setTimeout(done, 100);
     });
-
-    it('parallel object', function(done) {
-        var call_order = [];
-        async.parallel(getFunctionsObject(call_order), function(err, results){
-            expect(err).to.equal(null);
-            expect(call_order).to.eql([3,1,2]);
-            expect(results).to.eql({
-                one: 1,
-                two: 2,
-                three: [3,3]
-            });
-            done();
-        });
-    });
 });

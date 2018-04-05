@@ -17,7 +17,7 @@ describe.skip("filter", function () {
         });
     });
 
-    it('filter original untouched', function(done){
+    it('filter original untouched - 원본 배열은 수정되지 않아야 한다.', function(done){
         var a = [3,1,2];
         async.filter(a, function(x, callback){
             callback(null, x % 2);
@@ -29,7 +29,7 @@ describe.skip("filter", function () {
         });
     });
 
-    it('filter collection', function(done){
+    it('filter collection - 객체에 대응할 수 있어야 한다.', function(done){
         var a = {a: 3, b: 1, c: 2};
         async.filter(a, function(x, callback){
             callback(null, x % 2);

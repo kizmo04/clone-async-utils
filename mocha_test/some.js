@@ -24,7 +24,7 @@ describe.skip("some", function () {
         });
     });
 
-    it('some early return', function(done){
+    it('some early return - 최종 콜백은 단 한번만 실행되어야 한다.', function(done){
         var call_order = [];
         async.some([1,2,3], function(x, callback){
             setTimeout(function(){

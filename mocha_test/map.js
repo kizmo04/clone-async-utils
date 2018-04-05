@@ -21,7 +21,7 @@ describe.skip("map", function() {
         });
     });
 
-    it('map original untouched', function(done) {
+    it('map original untouched - 원본 배열은 수정되어서는 안된다.', function(done) {
         var a = [1, 2, 3];
         async.map(a, function(x, callback) {
             callback(null, x * 2);
@@ -29,20 +29,6 @@ describe.skip("map", function() {
             expect(results).to.eql([2, 4, 6]);
             expect(a).to.eql([1, 2, 3]);
             done();
-        });
-    });
-
-    it('map without main callback', function(done) {
-        var a = [1, 2, 3];
-        var r = [];
-        async.map(a, function(x, callback) {
-            r.push(x);
-            var done_ = r.length == a.length;
-            callback(null);
-            if (done_) {
-                expect(r).to.eql(a);
-                done();
-            }
         });
     });
 
@@ -55,7 +41,7 @@ describe.skip("map", function() {
         setTimeout(done, 50);
     });
 
-    it('map undefined array', function(done) {
+    it('map undefined array - undefined가 배열 대신 들어왔을 경우, 최종 콜백에 빈 배열을 결과값으로 돌려주어야 한다.', function(done) {
         async.map(undefined, function(x, callback) {
             callback();
         }, function(err, result) {
@@ -65,7 +51,7 @@ describe.skip("map", function() {
         setTimeout(done, 50);
     });
 
-    it('map object', function(done) {
+    it('map object - 객체에 대응할 수 있어야 한다.', function(done) {
         async.map({
             a: 1,
             b: 2,
