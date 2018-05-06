@@ -4,7 +4,7 @@ var assert = require('assert');
 
 describe.skip('reduce', function() {
 
-    it('reduce', function(done) {
+    it('reduce 1', function(done) {
         var call_order = [];
         async.reduce([1,2,3], 0, function(a, x, callback){
             call_order.push(x);
@@ -13,6 +13,19 @@ describe.skip('reduce', function() {
             assert(err === null, err + " passed instead of 'null'");
             expect(result).to.equal(6);
             expect(call_order).to.eql([1,2,3]);
+            done();
+        });
+    });
+    
+    it('reduce 2', function(done) {
+        var call_order = [];
+        async.reduce([10,20,30], 0, function(a, x, callback){
+            call_order.push(x);
+            callback(null, a * x);
+        }, function(err, result){
+            assert(err === null, err + " passed instead of 'null'");
+            expect(result).to.equal(6000);
+            expect(call_order).to.eql([10,20,30]);
             done();
         });
     });
