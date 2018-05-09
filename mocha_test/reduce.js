@@ -19,7 +19,7 @@ describe.skip('reduce', function() {
     
     it('reduce 2', function(done) {
         var call_order = [];
-        async.reduce([10,20,30], 0, function(a, x, callback){
+        async.reduce([10,20,30], 1, function(a, x, callback){
             call_order.push(x);
             callback(null, a * x);
         }, function(err, result){
