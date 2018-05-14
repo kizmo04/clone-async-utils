@@ -26,11 +26,11 @@ describe.skip("waterfall", function () {
             },
             function(arg4, callback){
                 call_order.push('fn4');
-                expect(call_order).to.eql(['fn1','fn2','fn3','fn4']);
                 callback(null, 'test');
             }
         ], function(err){
             expect(err === null, err + " passed instead of 'null'");
+            expect(call_order).to.eql(['fn1','fn2','fn3','fn4']);
             done();
         });
     });
