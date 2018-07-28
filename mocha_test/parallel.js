@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var assert = require('assert');
 var getFunctionsObject = require('./support/get_function_object');
 
-describe.skip('parallel', function() {
+describe('parallel', function() {
 
     it('parallel', function(done) {
         var call_order = [];
