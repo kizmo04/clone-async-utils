@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var assert = require('assert');
 var getFunctionsObject = require('./support/get_function_object');
 
-describe.skip('series', function() {
+describe('series', function() {
     it('series', function(done) {
         var call_order = [];
         async.series([
