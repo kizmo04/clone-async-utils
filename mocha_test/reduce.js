@@ -2,7 +2,7 @@ var async = require('../lib');
 var expect = require('chai').expect;
 var assert = require('assert');
 
-describe.skip('reduce', function() {
+describe('reduce', function() {
 
     it('reduce 1', function(done) {
         var call_order = [];
@@ -16,7 +16,7 @@ describe.skip('reduce', function() {
             done();
         });
     });
-    
+
     it('reduce 2', function(done) {
         var call_order = [];
         async.reduce([10,20,30], 1, function(a, x, callback){
@@ -30,9 +30,22 @@ describe.skip('reduce', function() {
         });
     });
 
-    it('reduce async with non-reference memo', function(done) {
+    it('reduce async', function(done) {
         async.reduce([1,3,2], 0, function(a, x, callback){
             setTimeout(function(){callback(null, a + x);}, Math.random()*100);
+        }, function(err, result){
+            expect(result).to.equal(6);
+            done();
+        });
+    });
+
+    it('reduce object', function(done) {
+        async.reduce({
+            a: {value: 1},
+            b: {value: 2},
+            c: {value: 3}
+        }, 0, function(a, x, callback){
+            setTimeout(function(){callback(null, a + x.value);}, Math.random()*100);
         }, function(err, result){
             expect(result).to.equal(6);
             done();
