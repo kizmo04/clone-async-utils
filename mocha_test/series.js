@@ -34,6 +34,30 @@ describe('series', function() {
         });
     });
 
+    xit('series object', function(done) {
+        var call_order = [];
+        async.series({
+            one: function(callback) {
+                setTimeout(function() {
+                    call_order.push(1);
+                    callback(null, 1);
+                }, 200);
+            },
+            two: function(callback){
+                setTimeout(function() {
+                    call_order.push(2);
+                    callback(null, 2);
+                }, 100);
+            }
+        },
+        function(err, results){
+            assert(err === null, err + " passed instead of 'null'");
+            expect(results).to.eql({one: 1, two: 2});
+            expect(call_order).to.eql([1,2]);
+            done();
+        });
+    });
+
     it('empty array', function(done) {
         async.series([], function(err, results){
             expect(err).to.equal(null);
