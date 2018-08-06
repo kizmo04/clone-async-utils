@@ -34,7 +34,7 @@ describe('series', function() {
         });
     });
 
-    xit('series object', function(done) {
+    it('series object', function(done) {
         var call_order = [];
         async.series({
             one: function(callback) {
