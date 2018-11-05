@@ -39,7 +39,7 @@ describe("each", function() {
 
     it('each error - 에러가 발생할 경우 최종 콜백에 에러 정보를 넘겨주고 실행시킨 후 모든 프로세스를 종료해야 한다.', function(done) {
         async.each([1,2,3], function(x, callback){
-            callback('error');
+            if (x === 2) callback('error');
         }, function(err){
             expect(err).to.equal('error');
         });
